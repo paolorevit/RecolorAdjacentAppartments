@@ -131,15 +131,9 @@ namespace RecolorAdjacentAppartments
             List<int> preservedZoneNumbers = new List<int>();
             foreach (int zoneNumber in allZoneNumbers)
             {
-                if (!preservedZoneNumbers.Contains(zoneNumber - 1))
-                {
-                    if (zoneNumber != groupsOnLevelCount) preservedZoneNumbers.Add(zoneNumber);
-                    else
-                    {
-                        if (!preservedZoneNumbers.Contains(1)) preservedZoneNumbers.Add(zoneNumber);
-                    }
-                }
+                if (!preservedZoneNumbers.Contains(zoneNumber - 1)) preservedZoneNumbers.Add(zoneNumber);
             }
+            if (preservedZoneNumbers.Contains(1) && preservedZoneNumbers.Contains(groupsOnLevelCount)) preservedZoneNumbers.Remove(groupsOnLevelCount);
             return preservedZoneNumbers;
         }
         private void ChangeRoomsColor(IEnumerable<Room> group)
