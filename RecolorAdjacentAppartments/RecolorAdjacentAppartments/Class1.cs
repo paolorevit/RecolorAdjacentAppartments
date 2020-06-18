@@ -87,8 +87,11 @@ namespace RecolorAdjacentAppartments
             return areaStatus && nameStatus;
         }
         private string GetRoomParameterByName(Room room, string name)
-        {
-            return room.GetParameters(name).First().AsString();
+        {            
+            string value= room.GetParameters(name).First().AsString();
+            if (value != null) Regex.Replace(value, @"\s+", "");
+            if (string.IsNullOrWhiteSpace(value)) value = null;
+            return value;
         }
         private int GetZoneNumber(Room room)
         {
