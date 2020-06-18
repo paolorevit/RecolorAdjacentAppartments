@@ -26,8 +26,8 @@ namespace RecolorAdjacentAppartments
             {RoomParams.RomCalcSubzoneId,"ROM_Расчетная_подзона_ID"},
             {RoomParams.RomSubzoneIndex,"ROM_Подзона_Index"}
         };
-        public static string appartmentNameIdentifier = "квартира";
-        public static Regex regexForRoomZone = new Regex( appartmentNameIdentifier+@"(\s*)(\d+)");
+        public static string zoneNameIdentifier = "квартира";
+        public static Regex regexForRoomZone = new Regex( zoneNameIdentifier+@"(\s*)(\d+)");
         public static string suffix = ".Полутон";
     }
 }
