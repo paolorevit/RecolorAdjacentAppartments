@@ -15,7 +15,6 @@ namespace RecolorAdjacentAppartments
     {
         Document doc;
         int changedGroupsCount = 0;
-
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             UIApplication uiapp = commandData.Application;
@@ -87,8 +86,8 @@ namespace RecolorAdjacentAppartments
             return areaStatus && nameStatus;
         }
         private string GetRoomParameterByName(Room room, string name)
-        {            
-            string value= room.GetParameters(name).First().AsString();
+        {
+            string value = room.GetParameters(name).First().AsString();
             if (value != null) Regex.Replace(value, @"\s+", "");
             if (string.IsNullOrWhiteSpace(value)) value = null;
             return value;
@@ -133,7 +132,7 @@ namespace RecolorAdjacentAppartments
             {
                 if (!preservedZoneNumbers.Contains(zoneNumber - 1)) preservedZoneNumbers.Add(zoneNumber);
             }
-            if (preservedZoneNumbers.Contains(1) && preservedZoneNumbers.Contains(groupsOnLevelCount)) preservedZoneNumbers.Remove(groupsOnLevelCount);
+            if (groupsOnLevelCount!=1) if (preservedZoneNumbers.Contains(1) && preservedZoneNumbers.Contains(groupsOnLevelCount)) preservedZoneNumbers.Remove(groupsOnLevelCount);
             return preservedZoneNumbers;
         }
         private void ChangeRoomsColor(IEnumerable<Room> group)
